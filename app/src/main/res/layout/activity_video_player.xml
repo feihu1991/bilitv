@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_color">
+
+    <!-- Video Player View -->
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/player_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:use_controller="false"
+        app:show_buffering="when_playing"
+        app:resize_mode="fit" />
+
+    <!-- Danmaku Container -->
+    <FrameLayout
+        android:id="@+id/danmaku_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="false"
+        android:focusable="false" />
+
+    <!-- Controls View -->
+    <FrameLayout
+        android:id="@+id/controls_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/controls_gradient"
+        android:clickable="true"
+        android:focusable="true">
+
+        <!-- Top Controls -->
+        <LinearLayout
+            android:id="@+id/top_controls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="32dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <!-- Back Button -->
+                <TextView
+                    android:id="@+id/back_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="◀"
+                    android:textSize="48sp"
+                    android:textColor="@color/white"
+                    android:padding="16dp"
+                    android:focusable="true"
+                    android:clickable="true" />
+
+                <!-- Video Info -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="16dp">
+
+                    <TextView
+                        android:id="@+id/title_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="28sp"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:maxLines="2"
+                        android:ellipsize="end" />
+
+                    <TextView
+                        android:id="@+id/description_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:textColor="@color/light_gray"
+                        android:layout_marginTop="8dp"
+                        android:maxLines="1"
+                        android:ellipsize="end" />
+                </LinearLayout>
+
+                <!-- Live Indicator -->
+                <TextView
+                    android:id="@+id/live_indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="LIVE"
+                    android:textSize="24sp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/live_badge"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Center Play/Pause Hint -->
+        <TextView
+            android:id="@+id/play_pause_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="❚❚"
+            android:textSize="96sp"
+            android:textColor="@color/white"
+            android:alpha="0"
+            android:shadowColor="@color/black"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="8" />
+
+        <!-- Bottom Controls -->
+        <LinearLayout
+            android:id="@+id/bottom_controls"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="bottom"
+            android:padding="32dp">
+
+            <!-- Progress Bar -->
+            <View
+                android:id="@+id/progress_view"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="@color/bilibili_pink"
+                android:layout_marginBottom="24dp" />
+
+            <!-- Control Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/play_pause_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="❚❚"
+                    android:textSize="36sp"
+                    android:textColor="@color/white"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:padding="16dp" />
+
+                <TextView
+                    android:id="@+id/danmaku_toggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="弹幕: 开"
+                    android:textSize="24sp"
+                    android:textColor="@color/white"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:padding="16dp"
+                    android:layout_marginStart="16dp" />
+
+                <TextView
+                    android:id="@+id/quality_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4K"
+                    android:textSize="24sp"
+                    android:textColor="@color/white"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:padding="16dp"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/quality_badge" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/live_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="直播中"
+                    android:textSize="24sp"
+                    android:textColor="@color/bilibili_pink"
+                    android:padding="16dp"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>
