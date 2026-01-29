@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Leanback" parent="Theme.Leanback.Browse">
+        <item name="android:colorPrimary">@color/bilibili_pink</item>
+        <item name="android:colorAccent">@color/bilibili_pink</item>
+    </style>
+
+    <style name="Widget.Leanback.ImageCardView.Style" parent="Widget.Leanback.ImageCardView">
+        <item name="cardBackground">@color/card_background</item>
+        <item name="cardCornerRadius">4dp</item>
+    </style>
+</resources>

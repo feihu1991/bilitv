@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BiliTV</string>
+    <string name="browse_title">BiliTV - 哔哩哔哩</string>
+    <string name="live_indicator">LIVE</string>
+    <string name="danmaku_enabled">弹幕: 开</string>
+    <string name="danmaku_disabled">弹幕: 关</string>
+    <string name="live_status">直播中</string>
+    <string name="play_button">播放</string>
+    <string name="pause_button">暂停</string>
+    <string name="back_button">返回</string>
+    <string name="search_title">搜索</string>
+    <string name="settings_title">设置</string>
+    <string name="recommended_title">推荐视频</string>
+    <string name="fourk_title">4K超清</string>
+    <string name="live_title">正在直播</string>
+    <string name="popular_title">热门视频</string>
+</resources>
