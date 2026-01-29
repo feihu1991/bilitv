@@ -31,6 +31,15 @@
 ### 4. 遥控器测试
 测试电视遥控器的按键响应。
 
+### 5. 性能测试
+测试应用的性能指标。
+
+### 6. 兼容性测试
+测试在不同设备和配置下的兼容性。
+
+### 7. 端到端（E2E）测试
+测试完整的用户使用流程。
+
 ## 测试用例
 
 ### MainActivityTest
@@ -199,6 +208,245 @@
 3. 验证属性值
 **预期结果**: 所有属性正确设置和获取
 
+### PerformanceTest
+
+#### TC-22: 应用启动时间测试
+**描述**: 验证应用启动时间
+**步骤**:
+1. 启动应用
+2. 测量从启动到完全显示的时间
+**预期结果**: 启动时间 < 3秒
+
+#### TC-23: 视频播放器启动时间测试
+**描述**: 验证视频播放器启动时间
+**步骤**:
+1. 启动视频播放器
+2. 测量启动时间
+**预期结果**: 启动时间 < 2秒
+
+#### TC-24: 主界面滚动性能测试
+**描述**: 验证主界面滚动性能
+**步骤**:
+1. 在主界面快速滚动
+2. 测量滚动时间
+**预期结果**: 滚动流畅，无明显延迟
+
+#### TC-25: 弹幕显示性能测试
+**描述**: 验证弹幕渲染性能
+**步骤**:
+1. 播放视频并显示弹幕
+2. 观察弹幕流畅度
+**预期结果**: 弹幕滚动流畅，无卡顿
+
+#### TC-26: 内存占用测试
+**描述**: 验证应用内存占用
+**步骤**:
+1. 运行应用
+2. 检查内存使用情况
+**预期结果**: 内存占用 < 最大内存的80%
+
+#### TC-27: 视频缓冲测试
+**描述**: 验证视频缓冲性能
+**步骤**:
+1. 播放视频10秒
+2. 检查是否有缓冲卡顿
+**预期结果**: 播放流畅，缓冲时间短
+
+### IntegrationTest
+
+#### TC-28: 主界面到视频播放器完整流程测试
+**描述**: 验证从主界面到视频播放器的完整流程
+**步骤**:
+1. 启动应用
+2. 导航到视频
+3. 选择视频
+4. 验证视频播放器启动
+**预期结果**: 完整流程无错误
+
+#### TC-29: 直播流程集成测试
+**描述**: 验证直播播放完整流程
+**步骤**:
+1. 导航到直播分类
+2. 选择直播
+3. 验证直播播放器启动
+**预期结果**: 直播流程正常
+
+#### TC-30: 视频播放和弹幕集成测试
+**描述**: 验证视频播放和弹幕同时工作的集成
+**步骤**:
+1. 播放视频
+2. 显示弹幕
+3. 操作控制面板
+**预期结果**: 视频和弹幕正常工作
+
+#### TC-31: 播放控制集成测试
+**描述**: 验证播放控制功能的集成
+**步骤**:
+1. 播放视频
+2. 测试播放/暂停
+3. 测试弹幕开关
+4. 测试画质按钮
+**预期结果**: 所有控制功能正常
+
+#### TC-32: 返回导航集成测试
+**描述**: 验证返回导航的集成
+**步骤**:
+1. 进入视频播放器
+2. 按返回键
+3. 验证返回到主界面
+**预期结果**: 导航正常
+
+#### TC-33: 4K视频播放集成测试
+**描述**: 验证4K视频播放的完整流程
+**步骤**:
+1. 导航到4K分类
+2. 选择4K视频
+3. 验证播放和画质标识
+**预期结果**: 4K视频正常播放
+
+### CompatibilityTest
+
+#### TC-34: Android版本兼容性测试
+**描述**: 验证Android版本兼容性
+**步骤**:
+1. 检查当前Android版本
+2. 验证功能正常
+**预期结果**: 支持Android 8.0及以上
+
+#### TC-35: 屏幕方向兼容性测试
+**描述**: 验证屏幕方向兼容性
+**步骤**:
+1. 启动视频播放器
+2. 检查屏幕方向
+**预期结果**: 强制横屏显示
+
+#### TC-36: 屏幕分辨率兼容性测试
+**描述**: 验证屏幕分辨率兼容性
+**步骤**:
+1. 检查屏幕分辨率
+2. 验证界面适配
+**预期结果**: 支持至少720P
+
+#### TC-37: Leanback支持测试
+**描述**: 验证Leanback支持
+**步骤**:
+1. 检查系统是否支持Leanback
+**预期结果**: 支持Android TV Leanback
+
+#### TC-38: 4K输出支持测试
+**描述**: 验证4K输出支持
+**步骤**:
+1. 检查设备是否支持4K输出
+**预期结果**: 记录设备能力
+
+#### TC-39: HDR支持测试
+**描述**: 验证HDR支持
+**步骤**:
+1. 检查设备是否支持HDR
+**预期结果**: 记录设备能力
+
+#### TC-40: 硬件加速支持测试
+**描述**: 验证硬件加速支持
+**步骤**:
+1. 检查显示设备特性
+2. 验证硬件加速
+**预期结果**: 支持硬件加速
+
+#### TC-41: ExoPlayer兼容性测试
+**描述**: 验证ExoPlayer兼容性
+**步骤**:
+1. 初始化ExoPlayer
+2. 验证功能正常
+**预期结果**: ExoPlayer正常工作
+
+#### TC-42: 触摸屏兼容性测试
+**描述**: 验证触摸屏兼容性
+**步骤**:
+1. 检查触摸屏支持
+**预期结果**: 应用不依赖触摸屏
+
+#### TC-43: 网络连接兼容性测试
+**描述**: 验证网络连接兼容性
+**步骤**:
+1. 检查WiFi和Ethernet支持
+**预期结果**: 至少支持一种网络方式
+
+### E2ETest
+
+#### E2E-01: 完整视频观看流程
+**描述**: 用户从启动应用到观看视频并返回的完整流程
+**步骤**:
+1. 启动应用
+2. 浏览视频
+3. 选择视频
+4. 播放视频
+5. 操作控制
+6. 返回主界面
+**预期结果**: 完整流程无错误
+
+#### E2E-02: 完整直播观看流程
+**描述**: 用户观看直播的完整流程
+**步骤**:
+1. 启动应用
+2. 导航到直播
+3. 选择直播
+4. 观看直播
+5. 返回主界面
+**预期结果**: 直播流程正常
+
+#### E2E-03: 多视频连续观看流程
+**描述**: 用户连续观看多个视频
+**步骤**:
+1. 播放第一个视频
+2. 返回
+3. 播放第二个视频
+4. 返回
+5. 播放第三个视频
+6. 返回
+**预期结果**: 多视频切换正常
+
+#### E2E-04: 浏览所有分类流程
+**描述**: 用户浏览所有视频分类
+**步骤**:
+1. 启动应用
+2. 浏览推荐视频
+3. 浏览4K视频
+4. 浏览直播
+5. 浏览热门视频
+**预期结果**: 所有分类浏览正常
+
+#### E2E-05: 深度导航测试
+**描述**: 用户深度使用应用导航功能
+**步骤**:
+1. 在主界面深度导航
+2. 进入视频播放器
+3. 在播放器内导航
+4. 返回主界面
+**预期结果**: 深度导航正常
+
+#### E2E-06: 长时间使用测试
+**描述**: 模拟用户长时间使用应用
+**步骤**:
+1. 连续使用应用30秒
+2. 多次播放视频
+3. 频繁导航
+**预期结果**: 应用稳定运行
+
+#### E2E-07: 错误处理测试
+**描述**: 测试各种错误情况下的应用行为
+**步骤**:
+1. 尝试播放无效URL
+2. 验证错误处理
+**预期结果**: 应用不崩溃，优雅处理错误
+
+#### E2E-08: 快速操作测试
+**描述**: 测试用户快速按键的情况
+**步骤**:
+1. 快速导航
+2. 快速播放/暂停
+3. 快速切换功能
+**预期结果**: 应用响应正常，无崩溃
+
 ## 自动化测试执行
 
 ### 运行所有测试
@@ -208,7 +456,32 @@
 
 ### 运行特定测试类
 ```bash
+# UI测试
 ./gradlew connectedAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.flashfinger.bilitv.MainActivityTest
+
+# 视频播放器测试
+./gradlew connectedAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.flashfinger.bilitv.VideoPlayerActivityTest
+
+# 直播播放器测试
+./gradlew connectedAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.flashfinger.bilitv.LivePlayerActivityTest
+
+# 弹幕管理器测试
+./gradlew connectedAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.flashfinger.bilitv.DanmakuManagerTest
+
+# 数据模型测试
+./gradlew connectedAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.flashfinger.bilitv.VideoDataTest
+
+# 性能测试
+./gradlew connectedAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.flashfinger.bilitv.performance.PerformanceTest
+
+# 集成测试
+./gradlew connectedAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.flashfinger.bilitv.integration.IntegrationTest
+
+# 兼容性测试
+./gradlew connectedAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.flashfinger.bilitv.compatibility.CompatibilityTest
+
+# 端到端测试
+./gradlew connectedAndroidTest -Pandroid.testInstrumentationRunnerArguments.class=com.flashfinger.bilitv.e2e.E2ETest
 ```
 
 ### 运行特定测试方法
@@ -266,6 +539,23 @@
 
 - 单元测试覆盖率 > 80%
 - UI测试覆盖率 > 70%
+- 集成测试覆盖率 > 60%
+- 性能测试覆盖率 > 50%
+- E2E测试覆盖率 > 40%
+
+## 测试用例统计
+
+- MainActivityTest: 5个测试用例
+- VideoPlayerActivityTest: 6个测试用例
+- LivePlayerActivityTest: 7个测试用例
+- DanmakuManagerTest: 8个测试用例
+- VideoDataTest: 13个测试用例
+- PerformanceTest: 6个测试用例
+- IntegrationTest: 6个测试用例
+- CompatibilityTest: 12个测试用例
+- E2ETest: 8个测试用例
+
+**总计: 71个自动化测试用例**
 
 ## 问题跟踪
 
