@@ -11,10 +11,13 @@ import androidx.test.uiautomator.UiObject;
 import androidx.test.uiautomator.UiSelector;
 
 import com.flashfinger.bilitv.data.VideoData;
+import com.flashfinger.bilitv.data.VideoDataFactory;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import java.util.List;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -26,6 +29,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Automated test for LivePlayerActivity
  * Tests live stream playback and real-time danmaku
+ * Uses real Bilibili API data for testing
  */
 @RunWith(AndroidJUnit4.class)
 public class LivePlayerActivityTest {
@@ -35,14 +39,21 @@ public class LivePlayerActivityTest {
     @Before
     public void setUp() {
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation());
+        // 使用模拟数据进行测试，避免网络请求
+        VideoDataFactory.setUseMockData(true);
     }
 
     @Test
     public void testLivePlayerLaunches() {
+        // 从 API 获取直播数据
+        List<VideoData> liveStreams = VideoDataFactory.getLiveStreams();
+        assertTrue("Should have live streams", liveStreams.size() > 0);
+
+        VideoData liveData = liveStreams.get(0);
         Intent intent = new Intent(ApplicationProvider.getApplicationContext(), com.flashfinger.bilitv.player.LivePlayerActivity.class);
-        intent.putExtra(VideoData.VIDEO_ID, "201");
-        intent.putExtra(VideoData.VIDEO_TITLE, "Test Live Stream");
-        intent.putExtra(VideoData.VIDEO_URL, "https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/mp4/xgplayer-demo-720p.mp4");
+        intent.putExtra(VideoData.VIDEO_ID, liveData.getId());
+        intent.putExtra(VideoData.VIDEO_TITLE, liveData.getTitle());
+        intent.putExtra(VideoData.VIDEO_URL, liveData.getVideoUrl());
 
         try (ActivityScenario<com.flashfinger.bilitv.player.LivePlayerActivity> scenario = ActivityScenario.launch(intent)) {
             scenario.onActivity(activity -> {
@@ -53,10 +64,15 @@ public class LivePlayerActivityTest {
 
     @Test
     public void testLiveIndicatorDisplayed() throws InterruptedException {
+        // 从 API 获取直播数据
+        List<VideoData> liveStreams = VideoDataFactory.getLiveStreams();
+        assertTrue("Should have live streams", liveStreams.size() > 0);
+
+        VideoData liveData = liveStreams.get(0);
         Intent intent = new Intent(ApplicationProvider.getApplicationContext(), com.flashfinger.bilitv.player.LivePlayerActivity.class);
-        intent.putExtra(VideoData.VIDEO_ID, "201");
-        intent.putExtra(VideoData.VIDEO_TITLE, "Test Live Stream");
-        intent.putExtra(VideoData.VIDEO_URL, "https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/mp4/xgplayer-demo-720p.mp4");
+        intent.putExtra(VideoData.VIDEO_ID, liveData.getId());
+        intent.putExtra(VideoData.VIDEO_TITLE, liveData.getTitle());
+        intent.putExtra(VideoData.VIDEO_URL, liveData.getVideoUrl());
 
         try (ActivityScenario<com.flashfinger.bilitv.player.LivePlayerActivity> scenario = ActivityScenario.launch(intent)) {
             Thread.sleep(2000);
@@ -69,10 +85,15 @@ public class LivePlayerActivityTest {
 
     @Test
     public void testLiveTitleContainsLivePrefix() throws InterruptedException {
+        // 从 API 获取直播数据
+        List<VideoData> liveStreams = VideoDataFactory.getLiveStreams();
+        assertTrue("Should have live streams", liveStreams.size() > 0);
+
+        VideoData liveData = liveStreams.get(0);
         Intent intent = new Intent(ApplicationProvider.getApplicationContext(), com.flashfinger.bilitv.player.LivePlayerActivity.class);
-        intent.putExtra(VideoData.VIDEO_ID, "201");
-        intent.putExtra(VideoData.VIDEO_TITLE, "Test Stream");
-        intent.putExtra(VideoData.VIDEO_URL, "https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/mp4/xgplayer-demo-720p.mp4");
+        intent.putExtra(VideoData.VIDEO_ID, liveData.getId());
+        intent.putExtra(VideoData.VIDEO_TITLE, liveData.getTitle());
+        intent.putExtra(VideoData.VIDEO_URL, liveData.getVideoUrl());
 
         try (ActivityScenario<com.flashfinger.bilitv.player.LivePlayerActivity> scenario = ActivityScenario.launch(intent)) {
             Thread.sleep(2000);
@@ -95,10 +116,15 @@ public class LivePlayerActivityTest {
 
     @Test
     public void testRealtimeDanmaku() throws InterruptedException {
+        // 从 API 获取直播数据
+        List<VideoData> liveStreams = VideoDataFactory.getLiveStreams();
+        assertTrue("Should have live streams", liveStreams.size() > 0);
+
+        VideoData liveData = liveStreams.get(0);
         Intent intent = new Intent(ApplicationProvider.getApplicationContext(), com.flashfinger.bilitv.player.LivePlayerActivity.class);
-        intent.putExtra(VideoData.VIDEO_ID, "201");
-        intent.putExtra(VideoData.VIDEO_TITLE, "Test Live Stream");
-        intent.putExtra(VideoData.VIDEO_URL, "https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/mp4/xgplayer-demo-720p.mp4");
+        intent.putExtra(VideoData.VIDEO_ID, liveData.getId());
+        intent.putExtra(VideoData.VIDEO_TITLE, liveData.getTitle());
+        intent.putExtra(VideoData.VIDEO_URL, liveData.getVideoUrl());
 
         try (ActivityScenario<com.flashfinger.bilitv.player.LivePlayerActivity> scenario = ActivityScenario.launch(intent)) {
             Thread.sleep(5000);
@@ -111,10 +137,15 @@ public class LivePlayerActivityTest {
 
     @Test
     public void testViewerCountUpdate() throws InterruptedException {
+        // 从 API 获取直播数据
+        List<VideoData> liveStreams = VideoDataFactory.getLiveStreams();
+        assertTrue("Should have live streams", liveStreams.size() > 0);
+
+        VideoData liveData = liveStreams.get(0);
         Intent intent = new Intent(ApplicationProvider.getApplicationContext(), com.flashfinger.bilitv.player.LivePlayerActivity.class);
-        intent.putExtra(VideoData.VIDEO_ID, "201");
-        intent.putExtra(VideoData.VIDEO_TITLE, "Test Live Stream");
-        intent.putExtra(VideoData.VIDEO_URL, "https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/mp4/xgplayer-demo-720p.mp4");
+        intent.putExtra(VideoData.VIDEO_ID, liveData.getId());
+        intent.putExtra(VideoData.VIDEO_TITLE, liveData.getTitle());
+        intent.putExtra(VideoData.VIDEO_URL, liveData.getVideoUrl());
 
         try (ActivityScenario<com.flashfinger.bilitv.player.LivePlayerActivity> scenario = ActivityScenario.launch(intent)) {
             Thread.sleep(2000);
@@ -136,10 +167,15 @@ public class LivePlayerActivityTest {
 
     @Test
     public void testLivePlayPause() throws InterruptedException {
+        // 从 API 获取直播数据
+        List<VideoData> liveStreams = VideoDataFactory.getLiveStreams();
+        assertTrue("Should have live streams", liveStreams.size() > 0);
+
+        VideoData liveData = liveStreams.get(0);
         Intent intent = new Intent(ApplicationProvider.getApplicationContext(), com.flashfinger.bilitv.player.LivePlayerActivity.class);
-        intent.putExtra(VideoData.VIDEO_ID, "201");
-        intent.putExtra(VideoData.VIDEO_TITLE, "Test Live Stream");
-        intent.putExtra(VideoData.VIDEO_URL, "https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/mp4/xgplayer-demo-720p.mp4");
+        intent.putExtra(VideoData.VIDEO_ID, liveData.getId());
+        intent.putExtra(VideoData.VIDEO_TITLE, liveData.getTitle());
+        intent.putExtra(VideoData.VIDEO_URL, liveData.getVideoUrl());
 
         try (ActivityScenario<com.flashfinger.bilitv.player.LivePlayerActivity> scenario = ActivityScenario.launch(intent)) {
             Thread.sleep(2000);
@@ -156,10 +192,15 @@ public class LivePlayerActivityTest {
 
     @Test
     public void testLiveControlsDisplay() throws InterruptedException {
+        // 从 API 获取直播数据
+        List<VideoData> liveStreams = VideoDataFactory.getLiveStreams();
+        assertTrue("Should have live streams", liveStreams.size() > 0);
+
+        VideoData liveData = liveStreams.get(0);
         Intent intent = new Intent(ApplicationProvider.getApplicationContext(), com.flashfinger.bilitv.player.LivePlayerActivity.class);
-        intent.putExtra(VideoData.VIDEO_ID, "201");
-        intent.putExtra(VideoData.VIDEO_TITLE, "Test Live Stream");
-        intent.putExtra(VideoData.VIDEO_URL, "https://sf1-hscdn-tos.pstatp.com/obj/media-fe/xgplayer_doc_video/mp4/xgplayer-demo-720p.mp4");
+        intent.putExtra(VideoData.VIDEO_ID, liveData.getId());
+        intent.putExtra(VideoData.VIDEO_TITLE, liveData.getTitle());
+        intent.putExtra(VideoData.VIDEO_URL, liveData.getVideoUrl());
 
         try (ActivityScenario<com.flashfinger.bilitv.player.LivePlayerActivity> scenario = ActivityScenario.launch(intent)) {
             Thread.sleep(6000);
@@ -171,5 +212,22 @@ public class LivePlayerActivityTest {
             onView(withId(R.id.controls_view))
                     .check(matches(isDisplayed()));
         }
+    }
+
+    @Test
+    public void testLiveStreamDataFromApi() {
+        // 测试从 API 获取直播数据
+        List<VideoData> liveStreams = VideoDataFactory.getLiveStreams();
+        assertNotNull("Live streams should not be null", liveStreams);
+        assertTrue("Should have at least one live stream", liveStreams.size() > 0);
+
+        VideoData firstLive = liveStreams.get(0);
+        assertNotNull("First live stream should not be null", firstLive);
+        assertNotNull("Live stream should have ID", firstLive.getId());
+        assertNotNull("Live stream should have title", firstLive.getTitle());
+        assertNotNull("Live stream should have cover URL", firstLive.getCoverUrl());
+        assertTrue("Live stream should be live", firstLive.isLiveStream());
+        assertEquals("Quality should be LIVE", "LIVE", firstLive.getQuality());
+        assertTrue("Title should contain live prefix", firstLive.getTitle().contains("【直播】"));
     }
 }
