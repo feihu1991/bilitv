@@ -39,6 +39,8 @@ public class VideoDataFactory {
 
     /**
      * 获取推荐视频列表
+     * 注意：Bilibili API 的推荐视频需要指定视频ID
+     * 这里使用热门视频作为推荐列表
      */
     public static List<VideoData> getRecommendedVideos() {
         if (useMockData) {
@@ -50,7 +52,8 @@ public class VideoDataFactory {
         }
 
         init();
-        List<VideoData> videos = apiClient.getRecommendedVideos();
+        // 使用热门视频作为推荐（因为推荐视频需要指定视频ID）
+        List<VideoData> videos = apiClient.getPopularVideos();
 
         if (videos.isEmpty()) {
             Log.w(TAG, "Failed to fetch recommended videos from API, using mock data");
