@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- General Settings -->
+    <PreferenceCategory android:title="@string/general">
+
+        <SwitchPreferenceCompat
+            android:key="auto_play"
+            android:title="@string/auto_play"
+            android:summary="@string/auto_play_summary"
+            android:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            android:key="show_subtitles"
+            android:title="@string/show_subtitles"
+            android:summary="@string/show_subtitles_summary"
+            android:defaultValue="true" />
+
+        <ListPreference
+            android:key="video_quality"
+            android:title="@string/video_quality"
+            android:summary="@string/video_quality_summary"
+            android:entries="@array/video_quality_entries"
+            android:entryValues="@array/video_quality_values"
+            android:defaultValue="auto" />
+
+    </PreferenceCategory>
+
+    <!-- Playback Settings -->
+    <PreferenceCategory android:title="@string/playback">
+
+        <SwitchPreferenceCompat
+            android:key="background_play"
+            android:title="@string/background_play"
+            android:summary="@string/background_play_summary"
+            android:defaultValue="false" />
+
+        <SwitchPreferenceCompat
+            android:key="danmaku_enabled"
+            android:title="@string/danmaku_enabled"
+            android:summary="@string/danmaku_enabled_summary"
+            android:defaultValue="true" />
+
+        <SeekBarPreference
+            android:key="danmaku_size"
+            android:title="@string/danmaku_size"
+            android:summary="@string/danmaku_size_summary"
+            android:max="100"
+            android:defaultValue="50" />
+
+    </PreferenceCategory>
+
+    <!-- Network Settings -->
+    <PreferenceCategory android:title="@string/network">
+
+        <SwitchPreferenceCompat
+            android:key="use_proxy"
+            android:title="@string/use_proxy"
+            android:summary="@string/use_proxy_summary"
+            android:defaultValue="false" />
+
+        <EditTextPreference
+            android:key="proxy_host"
+            android:title="@string/proxy_host"
+            android:summary="@string/proxy_host_summary"
+            android:dialogTitle="@string/proxy_host_dialog_title" />
+
+        <EditTextPreference
+            android:key="proxy_port"
+            android:title="@string/proxy_port"
+            android:summary="@string/proxy_port_summary"
+            android:dialogTitle="@string/proxy_port_dialog_title" />
+
+    </PreferenceCategory>
+
+    <!-- About -->
+    <PreferenceCategory android:title="@string/about">
+
+        <Preference
+            android:key="version"
+            android:title="@string/version"
+            android:summary="@string/version_summary" />
+
+        <Preference
+            android:key="about"
+            android:title="@string/about_app"
+            android:summary="@string/about_app_summary" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

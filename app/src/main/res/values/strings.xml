@@ -9,10 +9,50 @@
     <string name="play_button">播放</string>
     <string name="pause_button">暂停</string>
     <string name="back_button">返回</string>
+    <string name="back">返回</string>
     <string name="search_title">搜索</string>
     <string name="settings_title">设置</string>
     <string name="recommended_title">推荐视频</string>
     <string name="fourk_title">4K超清</string>
     <string name="live_title">正在直播</string>
     <string name="popular_title">热门视频</string>
+
+    <!-- Settings -->
+    <string name="settings">设置</string>
+    <string name="general">通用</string>
+    <string name="playback">播放</string>
+    <string name="network">网络</string>
+    <string name="about">关于</string>
+
+    <!-- General Settings -->
+    <string name="auto_play">自动播放</string>
+    <string name="auto_play_summary">自动播放下一个视频</string>
+    <string name="show_subtitles">显示字幕</string>
+    <string name="show_subtitles_summary">显示视频字幕</string>
+    <string name="video_quality">视频质量</string>
+    <string name="video_quality_summary">选择视频播放质量</string>
+
+    <!-- Playback Settings -->
+    <string name="background_play">后台播放</string>
+    <string name="background_play_summary">允许在后台播放视频</string>
+    <string name="danmaku_enabled_setting">弹幕显示</string>
+    <string name="danmaku_enabled_summary">显示视频弹幕</string>
+    <string name="danmaku_size">弹幕大小</string>
+    <string name="danmaku_size_summary">调整弹幕显示大小</string>
+
+    <!-- Network Settings -->
+    <string name="use_proxy">使用代理</string>
+    <string name="use_proxy_summary">配置网络代理</string>
+    <string name="proxy_host">代理主机</string>
+    <string name="proxy_host_summary">代理服务器地址</string>
+    <string name="proxy_host_dialog_title">输入代理主机地址</string>
+    <string name="proxy_port">代理端口</string>
+    <string name="proxy_port_summary">代理服务器端口</string>
+    <string name="proxy_port_dialog_title">输入代理端口号</string>
+
+    <!-- About -->
+    <string name="version">版本</string>
+    <string name="version_summary">1.0.0</string>
+    <string name="about_app">关于应用</string>
+    <string name="about_app_summary">BiliTV - Android TV Bilibili客户端</string>
 </resources>
