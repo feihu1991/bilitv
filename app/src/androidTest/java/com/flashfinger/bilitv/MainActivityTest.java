@@ -195,7 +195,6 @@ public class MainActivityTest {
         assertNotNull("Recommended videos should not be null after cache clear", videos);
         assertTrue("Should have at least one recommended video after cache clear", videos.size() > 0);
     }
-}
 
     @Test
     public void testBackButton() {
