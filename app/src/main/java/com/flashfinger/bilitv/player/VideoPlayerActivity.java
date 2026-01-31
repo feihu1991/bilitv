@@ -173,8 +173,9 @@ public class VideoPlayerActivity extends AppCompatActivity {
 
         for (int i = 0; i < demoDanmakus.length; i++) {
             final int delay = i * 2000;
+            final int index = i;
             controlsHandler.postDelayed(() -> {
-                danmakuManager.addDanmaku(demoDanmakus[i]);
+                danmakuManager.addDanmaku(demoDanmakus[index]);
             }, delay);
         }
     }

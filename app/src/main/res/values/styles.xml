@@ -7,6 +7,5 @@
 
     <style name="Widget.Leanback.ImageCardView.Style" parent="Widget.Leanback.ImageCardView">
         <item name="cardBackground">@color/card_background</item>
-        <item name="cardCornerRadius">4dp</item>
     </style>
 </resources>

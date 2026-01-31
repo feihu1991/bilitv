@@ -80,4 +80,10 @@ public class ImageCardView extends BaseCardView {
             mMainImageView.getLayoutParams().height = height;
         }
     }
+
+    public void setMainImage(Drawable drawable) {
+        if (mMainImageView != null) {
+            mMainImageView.setImageDrawable(drawable);
+        }
+    }
 }
