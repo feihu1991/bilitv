@@ -157,7 +157,9 @@ public class CompatibilityTest {
 
         for (Display display : displays) {
             int flags = display.getFlags();
-            boolean supportsWideColorGamut = (flags & Display.FLAG_SUPPORTS_WIDE_COLOR_GAMUT) != 0;
+            // FLAG_SUPPORTS_WIDE_COLOR_GAMUT is available in API 26+
+            boolean supportsWideColorGamut = android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O &&
+                    (flags & 0x00000001) != 0; // FLAG_SUPPORTS_WIDE_COLOR_GAMUT = 0x00000001
             System.out.println("Display " + display.getDisplayId() +
                     " supports wide color gamut: " + supportsWideColorGamut);
         }
