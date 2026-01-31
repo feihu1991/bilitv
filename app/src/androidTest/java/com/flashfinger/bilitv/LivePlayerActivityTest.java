@@ -82,7 +82,13 @@ public class LivePlayerActivityTest {
                     .resourceId("com.flashfinger.bilitv:id/title_text"));
 
             assertTrue("Title should contain live prefix", titleText.exists());
-            String displayedTitle = titleText.getText();
+            String displayedTitle;
+            try {
+                displayedTitle = titleText.getText();
+            } catch (androidx.test.uiautomator.UiObjectNotFoundException e) {
+                displayedTitle = "";
+            }
+            assertNotNull("Title text should not be null", displayedTitle);
             assertTrue("Title should contain 【直播】", displayedTitle.contains("【直播】"));
         }
     }
@@ -118,7 +124,12 @@ public class LivePlayerActivityTest {
                     .resourceId("com.flashfinger.bilitv:id/description_text"));
 
             assertTrue("Description should contain viewer count", descriptionText.exists());
-            String displayedDesc = descriptionText.getText();
+            String displayedDesc;
+            try {
+                displayedDesc = descriptionText.getText();
+            } catch (androidx.test.uiautomator.UiObjectNotFoundException e) {
+                displayedDesc = "";
+            }
             assertTrue("Description should contain '人观看'", displayedDesc.contains("人观看"));
         }
     }
